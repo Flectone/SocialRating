@@ -1,0 +1,11 @@
+name: SocialRating
+version: '1.0.0'
+main: org.bakinu.socialRating.SocialRating
+api-version: '1.21'
+commands:
+  getrating:
+    permission: socialrating.command.getrating
+    description: Gets player rating
+  setrating:
+    permission: socialrating.command.setrating
+    description: Sets player rating

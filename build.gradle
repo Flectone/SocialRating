@@ -27,6 +27,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
     implementation("com.zaxxer:HikariCP:5.1.0")
     compileOnly "org.xerial:sqlite-jdbc:3.47.1.0"
+    implementation("net.elytrium:serializer:1.1.1")
 
     compileOnly("org.projectlombok:lombok:1.18.38")
     annotationProcessor("org.projectlombok:lombok:1.18.38")

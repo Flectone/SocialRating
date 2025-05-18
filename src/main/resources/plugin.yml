@@ -9,3 +9,12 @@ commands:
   setrating:
     permission: socialrating.command.setrating
     description: Sets player rating
+  srreload:
+    permission: socialrating.command.srreload
+permissions:
+  socialrating.command.getrating:
+    default: true
+  socialrating.command.srreload:
+    default: op
+  socialrating.command.setrating:
+    default: op

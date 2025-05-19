@@ -35,7 +35,7 @@ public final class SocialRating extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
-        UserDAO userDAO = new UserDAO(database, (PaperPluginLogger) this.getLogger());
+        UserDAO userDAO = new UserDAO(database, (PaperPluginLogger) this.getLogger(), config);
         MiniMessage miniMessage = MiniMessage.miniMessage();
 
         PlayerJoinListener playerJoinListener = new PlayerJoinListener(userDAO);
@@ -58,7 +58,5 @@ public final class SocialRating extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        database.disconnect();
-    }
+    public void onDisable() { database.disconnect(); }
 }

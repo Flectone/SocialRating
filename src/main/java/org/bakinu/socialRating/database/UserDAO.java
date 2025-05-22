@@ -30,6 +30,26 @@ public class UserDAO {
         }
     }
 
+    public Map<UUID, Integer> getHighestRatings(int limit) {
+        Map<UUID, Integer> map = new LinkedHashMap<>();
+
+        try (Connection connection = database.getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT uuid, rating FROM users ORDER BY rating DESC LIMIT ?");
+            preparedStatement.setInt(1, limit);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                map.put(UUID.fromString(resultSet.getString("uuid")), resultSet.getInt("rating"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return map;
+    }
+
     public void update(Player player, int value) {
         try (Connection connection = database.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `users` SET `rating` = ? WHERE `uuid` = ?");

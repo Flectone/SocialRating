@@ -5,6 +5,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bakinu.socialRating.command.CommandGetRating;
 import org.bakinu.socialRating.command.CommandReload;
 import org.bakinu.socialRating.command.CommandSetRating;
+import org.bakinu.socialRating.command.CommandTopRating;
 import org.bakinu.socialRating.database.Database;
 import org.bakinu.socialRating.database.UserDAO;
 import org.bakinu.socialRating.event.PlayerChattedListener;
@@ -52,6 +53,9 @@ public final class SocialRating extends JavaPlugin {
 
         CommandSetRating commandSetRating = new CommandSetRating(userDAO, config, miniMessage);
         this.getCommand("setrating").setExecutor(commandSetRating);
+
+        CommandTopRating commandTopRating = new CommandTopRating(miniMessage, userDAO, config);
+        this.getCommand("toprating").setExecutor(commandTopRating);
 
         CommandReload commandReload = new CommandReload(database, config, miniMessage, projectPath);
         this.getCommand("srreload").setExecutor(commandReload);

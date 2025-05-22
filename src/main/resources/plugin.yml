@@ -9,6 +9,9 @@ commands:
   setrating:
     permission: socialrating.command.setrating
     description: Sets player rating
+  toprating:
+    permission: socialrating.command.toprating
+    description: Sends highest ratings on server
   srreload:
     permission: socialrating.command.srreload
 permissions:
@@ -18,3 +21,5 @@ permissions:
     default: op
   socialrating.command.setrating:
     default: op
+  socialrating.command.toprating:
+    default: true

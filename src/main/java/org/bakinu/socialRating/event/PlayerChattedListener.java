@@ -25,7 +25,7 @@ public class PlayerChattedListener implements Listener {
 
         if (!config.getLowRatingEvents().getMuteChat().isEnabled()) return;
 
-        if (userDAO.getRating(player) < config.getLowRatingEvents().getMuteChat().getRating()) {
+        if (userDAO.getRating(player.getUniqueId()) < config.getLowRatingEvents().getMuteChat().getRating()) {
             player.sendMessage(miniMessage.deserialize(config.getLowRatingEvents().getMuteChat().getMessage()));
             asyncChatEvent.setCancelled(true);
         }

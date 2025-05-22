@@ -38,7 +38,7 @@ public class CommandSetRating implements CommandExecutor {
             return false;
         }
 
-        int finalRating = userDAO.getRating(player) + integer;
+        int finalRating = userDAO.getRating(player.getUniqueId()) + integer;
         userDAO.update(player, finalRating);
 
         String message = config.getCommand().getSetrating().getMessage()

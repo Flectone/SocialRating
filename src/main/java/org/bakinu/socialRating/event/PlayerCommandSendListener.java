@@ -24,7 +24,7 @@ public class PlayerCommandSendListener implements Listener {
         Player player = event.getPlayer();
         if (!config.getLowRatingEvents().getMuteCommands().isEnabled()) return;
 
-        if (userDAO.getRating(player) >= config.getLowRatingEvents().getMuteCommands().getRating()) return;
+        if (userDAO.getRating(player.getUniqueId()) >= config.getLowRatingEvents().getMuteCommands().getRating()) return;
 
         String message = event.getMessage();
         String command = message.split(" ")[0];

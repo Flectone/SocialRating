@@ -61,10 +61,10 @@ public class UserDAO {
         }
     }
 
-    public int getRating(Player player) {
+    public int getRating(UUID uuid) {
         try (Connection connection = database.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT rating FROM `users` WHERE `uuid` = ?");
-            preparedStatement.setString(1, player.getUniqueId().toString());
+            preparedStatement.setString(1, uuid.toString());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

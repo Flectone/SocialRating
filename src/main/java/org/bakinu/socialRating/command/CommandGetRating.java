@@ -29,7 +29,7 @@ public class CommandGetRating implements CommandExecutor {
 
         if (player == null) return false;
 
-        int rating = userDAO.getRating(player);
+        int rating = userDAO.getRating(player.getUniqueId());
         String message = config.getCommand().getGetrating().getMessage()
                 .replace("{player_name}", player.getName())
                 .replace("{rating}", String.valueOf(rating));

@@ -62,5 +62,7 @@ public final class SocialRating extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() { database.disconnect(); }
+    public void onDisable() {
+        database.disconnect();
+    }
 }

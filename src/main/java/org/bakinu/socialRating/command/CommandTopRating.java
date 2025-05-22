@@ -6,6 +6,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import org.bakinu.socialRating.database.UserDAO;
 import org.bakinu.socialRating.service.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -51,13 +52,12 @@ public class CommandTopRating implements CommandExecutor {
 
         for (UUID key : keys) {
             index += 1;
-            Player player = Bukkit.getPlayer(key);
-            if (player == null) return false;
+            OfflinePlayer player = Bukkit.getOfflinePlayer(key);
 
             String message = config.getCommand().getTopRating().getMessage()
                     .replace("{index}", String.valueOf(index))
                     .replace("{player_name}", player.getName())
-                    .replace("{rating}", String.valueOf(userDAO.getRating(player)));
+                    .replace("{rating}", String.valueOf(userDAO.getRating(player.getUniqueId())));
             messageComponent = messageComponent + message + "\n";
         }
         commandSender.sendMessage(miniMessage.deserialize(messageComponent));

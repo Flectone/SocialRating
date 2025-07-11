@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.bakinu'
-version = '1.1.1'
+version = '1.2.0'
 
 shadowJar {
     archiveClassifier.set("")
@@ -21,6 +21,9 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        url = 'https://repo.extendedclip.com/releases/'
+    }
 }
 
 dependencies {
@@ -28,6 +31,7 @@ dependencies {
     implementation("com.zaxxer:HikariCP:5.1.0")
     compileOnly "org.xerial:sqlite-jdbc:3.47.1.0"
     implementation("net.elytrium:serializer:1.1.1")
+    compileOnly 'me.clip:placeholderapi:2.11.6'
 
     compileOnly("org.projectlombok:lombok:1.18.38")
     annotationProcessor("org.projectlombok:lombok:1.18.38")

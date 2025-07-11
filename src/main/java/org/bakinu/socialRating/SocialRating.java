@@ -11,7 +11,9 @@ import org.bakinu.socialRating.database.UserDAO;
 import org.bakinu.socialRating.event.PlayerChattedListener;
 import org.bakinu.socialRating.event.PlayerCommandSendListener;
 import org.bakinu.socialRating.event.PlayerJoinListener;
+import org.bakinu.socialRating.integration.RatingExpansion;
 import org.bakinu.socialRating.service.Config;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -59,6 +61,12 @@ public final class SocialRating extends JavaPlugin {
 
         CommandReload commandReload = new CommandReload(database, config, miniMessage, projectPath);
         this.getCommand("srreload").setExecutor(commandReload);
+
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
+            RatingExpansion ratingExpansion = new RatingExpansion(this, userDAO);
+            ratingExpansion.register();
+        }
+
     }
 
     @Override

@@ -54,7 +54,7 @@ public class Config extends YamlSerializable {
     public static final class LowRatingEvents {
         private MuteChat muteChat = new MuteChat();
 
-        @Comment(@CommentValue("When a player's rating is too low, they cannot speak in chat"))
+        @Comment(@CommentValue("When a player's rating is too low, they cant speak in chat"))
         @Getter
         public static final class MuteChat {
             private boolean enabled = true;
@@ -64,7 +64,7 @@ public class Config extends YamlSerializable {
 
         private MuteCommands muteCommands = new MuteCommands();
 
-        @Comment(@CommentValue("When a player's rating is too low, they cannot use commands"))
+        @Comment(@CommentValue("When a player's rating is too low, they cant use commands"))
         @Getter
         public static final class MuteCommands {
             private boolean enabled = true;

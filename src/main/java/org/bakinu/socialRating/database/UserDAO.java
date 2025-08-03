@@ -1,26 +1,29 @@
 package org.bakinu.socialRating.database;
 
-import com.destroystokyo.paper.utils.PaperPluginLogger;
 import org.bakinu.socialRating.service.Config;
 import org.bukkit.entity.Player;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class UserDAO {
     private final Database database;
-    private final PaperPluginLogger paperPluginLogger;
     private final Config config;
 
-    public UserDAO(Database database, PaperPluginLogger paperPluginLogger, Config config) {
+    public UserDAO(Database database, Config config) {
         this.database = database;
-        this.paperPluginLogger = paperPluginLogger;
         this.config = config;
     }
 
     public void add(Player player) {
         try (Connection connection = database.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT OR IGNORE INTO `users` (`uuid`, `rating`) VALUES (?, ?)");
+
             preparedStatement.setString(1, player.getUniqueId().toString());
             preparedStatement.setInt(2, config.getBaseRating());
 
@@ -53,8 +56,10 @@ public class UserDAO {
     public void update(Player player, int value) {
         try (Connection connection = database.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `users` SET `rating` = ? WHERE `uuid` = ?");
+
             preparedStatement.setInt(1, value);
             preparedStatement.setString(2, player.getUniqueId().toString());
+
             preparedStatement.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
@@ -65,6 +70,7 @@ public class UserDAO {
         try (Connection connection = database.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT rating FROM `users` WHERE `uuid` = ?");
             preparedStatement.setString(1, uuid.toString());
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

@@ -1,6 +1,5 @@
 package org.bakinu.socialRating;
 
-import com.destroystokyo.paper.utils.PaperPluginLogger;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bakinu.socialRating.command.CommandGetRating;
 import org.bakinu.socialRating.command.CommandReload;
@@ -37,8 +36,8 @@ public final class SocialRating extends JavaPlugin {
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
-
-        UserDAO userDAO = new UserDAO(database, (PaperPluginLogger) this.getLogger(), config);
+        
+        UserDAO userDAO = new UserDAO(database, config);
         MiniMessage miniMessage = MiniMessage.miniMessage();
 
         PlayerJoinListener playerJoinListener = new PlayerJoinListener(userDAO);

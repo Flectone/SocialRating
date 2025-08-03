@@ -25,7 +25,7 @@ public class RatingExpansion extends PlaceholderExpansion {
     @Override
     @NotNull
     public String getIdentifier() {
-        return "socialrating"; //
+        return "socialrating";
     }
 
     @Override

@@ -1,6 +1,7 @@
 name: SocialRating
 version: '1.2.0'
 main: org.bakinu.socialRating.SocialRating
+authors: [ Bakinu ]
 api-version: '1.21'
 depend: [PlaceholderAPI]
 commands:

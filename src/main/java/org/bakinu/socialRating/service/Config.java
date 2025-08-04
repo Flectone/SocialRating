@@ -25,10 +25,10 @@ public class Config extends YamlSerializable {
 
     @Getter
     public static final class Command {
-        private Command.GetRating getrating = new Command.GetRating();
-        private Command.SetRating setrating = new Command.SetRating();
-        private Command.SrReload srreload = new Command.SrReload();
-        private Command.TopRating topRating = new Command.TopRating();
+        private GetRating getrating = new Command.GetRating();
+        private SetRating setrating = new Command.SetRating();
+        private SrReload srreload = new Command.SrReload();
+        private TopRating topRating = new Command.TopRating();
 
         @Getter
         public static final class GetRating {
